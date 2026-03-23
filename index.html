@@ -1,97 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GameHub</title>
-  <style>
-    body {font-family: Arial, sans-serif; margin:0; background:#0f172a; color:white;}
-    header {padding:20px; text-align:center; background:#1e293b; font-size:24px; font-weight:bold;}
-    .container {padding:20px;}
-    .category {margin-bottom:30px;}
-    .category h2 {border-bottom:2px solid #38bdf8; padding-bottom:5px;}
-    .games {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; margin-top:15px;}
-    .card {background:#1e293b; padding:15px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.5);}
-    .card h3 {margin-top:0;}
-    .buttons a {display:inline-block; margin:5px 5px 0 0; padding:8px 12px; border-radius:5px; text-decoration:none; color:white; background:#38bdf8;}
-    .buttons a.download {background:#22c55e;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GameHub 2060</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Orbitron',sans-serif}
+
+body{
+  background:#020617;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* animated gradient glow */
+body::before{
+  content:"";
+  position:fixed;
+  width:200%;
+  height:200%;
+  background: radial-gradient(circle, #22c55e33, transparent 40%), radial-gradient(circle, #6366f133, transparent 40%);
+  animation: move 15s infinite alternate ease-in-out;
+  z-index:-2;
+}
+
+@keyframes move{
+  0%{transform:translate(0,0)}
+  100%{transform:translate(-200px,-200px)}
+}
+
+/* stars */
+.star{
+  position:fixed;
+  width:2px;
+  height:2px;
+  background:white;
+  opacity:0.7;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:0.2}
+  to{opacity:1}
+}
+
+header{
+  text-align:center;
+  padding:25px;
+  font-size:34px;
+  background:linear-gradient(90deg,#22c55e,#6366f1);
+  text-shadow:0 0 25px #22c55e;
+}
+
+.container{padding:20px}
+
+.search-box{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:none;
+  margin-bottom:20px;
+  font-size:16px;
+  background:#0f172a;
+  color:white;
+}
+
+.categories{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.category-btn{
+  padding:10px 16px;
+  border:none;
+  border-radius:25px;
+  background:#0f172a;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.category-btn:hover, .active{
+  background:#22c55e;
+  box-shadow:0 0 15px #22c55e;
+}
+
+.games{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(15,23,42,0.6);
+  border-radius:20px;
+  padding:18px;
+  backdrop-filter: blur(15px);
+  transition:0.4s;
+  position:relative;
+}
+
+/* glow border animation */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:20px;
+  padding:2px;
+  background:linear-gradient(45deg,#22c55e,#6366f1,#22c55e);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  animation: borderAnim 4s linear infinite;
+}
+
+@keyframes borderAnim{
+  0%{filter:hue-rotate(0deg)}
+  100%{filter:hue-rotate(360deg)}
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.05);
+  box-shadow:0 0 40px #22c55e55;
+}
+
+.buttons a{
+  display:inline-block;
+  margin-top:10px;
+  margin-right:6px;
+  padding:9px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  color:white;
+}
+
+.site{background:#3b82f6}
+.download{background:#22c55e}
+
+footer{
+  text-align:center;
+  padding:20px;
+  margin-top:30px;
+  color:#94a3b8;
+}
+
+</style>
 </head>
+
 <body>
 
-<header>🎮 GameHub - All Games in One Place</header>
+<header>🚀 GameHub 2060 – Ultra Real Gaming Portal</header>
 
 <div class="container">
 
-  <div class="category">
-    <h2>🔥 Popular Games</h2>
-    <div class="games">
+<input type="text" id="search" class="search-box" placeholder="Search futuristic games...">
 
-      <div class="card">
-        <h3>Roblox</h3>
-        <p>Play millions of user-created games online.</p>
-        <div class="buttons">
-          <a href="https://www.roblox.com" target="_blank">Official Site</a>
-          <a href="https://www.roblox.com/download" class="download" target="_blank">Download</a>
-        </div>
-      </div>
+<div class="categories">
+  <button class="category-btn active" onclick="filter('all', event)">All</button>
+  <button class="category-btn" onclick="filter('game', event)">Games</button>
+  <button class="category-btn" onclick="filter('tool', event)">Tools</button>
+</div>
 
-      <div class="card">
-        <h3>Minecraft</h3>
-        <p>Build, explore and survive in a blocky world.</p>
-        <div class="buttons">
-          <a href="https://www.minecraft.net" target="_blank">Official Site</a>
-          <a href="https://www.minecraft.net/en-us/download" class="download" target="_blank">Download</a>
-        </div>
-      </div>
+<div class="games">
 
-    </div>
-  </div>
+<div class="card" data-type="game">
+<h3>Roblox</h3>
+<p>Play millions of user-created games online.</p>
+<div class="buttons">
+<a href="https://www.roblox.com" target="_blank" class="site">Website</a>
+<a href="https://www.roblox.com/download" target="_blank" class="download">Download</a>
+</div>
+</div>
 
-  <div class="category">
-    <h2>⚙️ Minecraft Tools & Clients</h2>
-    <div class="games">
+<div class="card" data-type="game">
+<h3>Minecraft</h3>
+<p>Build, explore and survive in a blocky world.</p>
+<div class="buttons">
+<a href="https://www.minecraft.net" target="_blank" class="site">Website</a>
+<a href="https://www.minecraft.net/download" target="_blank" class="download">Download</a>
+</div>
+</div>
 
-      <div class="card">
-        <h3>Wurst Client</h3>
-        <p>Custom Minecraft client with advanced features.</p>
-        <div class="buttons">
-          <a href="https://www.wurstclient.net" target="_blank">Official Site</a>
-          <a href="https://www.wurstclient.net/download/" class="download" target="_blank">Download</a>
-        </div>
-      </div>
+<div class="card" data-type="tool">
+<h3>Wurst Client</h3>
+<p>Advanced Minecraft client.</p>
+<div class="buttons">
+<a href="https://www.wurstclient.net" target="_blank" class="site">Website</a>
+<a href="https://www.wurstclient.net/download/" target="_blank" class="download">Download</a>
+</div>
+</div>
 
-      <div class="card">
-        <h3>Fast Client</h3>
-        <p>Optimized client for better Minecraft performance.</p>
-        <div class="buttons">
-          <a href="https://fastclient.net" target="_blank">Official Site</a>
-          <a href="https://fastclient.net/download" class="download" target="_blank">Download</a>
-        </div>
-      </div>
+<div class="card" data-type="tool">
+<h3>Fast Client</h3>
+<p>Boost Minecraft performance.</p>
+<div class="buttons">
+<a href="https://fastclient.net" target="_blank" class="site">Website</a>
+<a href="https://fastclient.net/download" target="_blank" class="download">Download</a>
+</div>
+</div>
 
-      <div class="card">
-        <h3>SK Launcher</h3>
-        <p>Free launcher to play Minecraft easily.</p>
-        <div class="buttons">
-          <a href="https://skmedix.pl" target="_blank">Official Site</a>
-          <a href="https://skmedix.pl/sklauncher" class="download" target="_blank">Download</a>
-        </div>
-      </div>
+<div class="card" data-type="tool">
+<h3>SK Launcher</h3>
+<p>Free Minecraft launcher.</p>
+<div class="buttons">
+<a href="https://skmedix.pl" target="_blank" class="site">Website</a>
+<a href="https://skmedix.pl/sklauncher" target="_blank" class="download">Download</a>
+</div>
+</div>
 
-      <div class="card">
-        <h3>Fabric API</h3>
-        <p>Lightweight modding toolchain for Minecraft.</p>
-        <div class="buttons">
-          <a href="https://fabricmc.net" target="_blank">Official Site</a>
-          <a href="https://fabricmc.net/use/installer/" class="download" target="_blank">Download</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
+<div class="card" data-type="tool">
+<h3>Fabric API</h3>
+<p>Lightweight modding tool.</p>
+<div class="buttons">
+<a href="https://fabricmc.net" target="_blank" class="site">Website</a>
+<a href="https://fabricmc.net/use/installer/" target="_blank" class="download">Download</a>
+</div>
+</div>
 
 </div>
+
+</div>
+
+<footer>✨ Future Gaming Experience | 2060 UI</footer>
+
+<script>
+const searchInput=document.getElementById('search');
+const cards=document.querySelectorAll('.card');
+
+searchInput.addEventListener('input',()=>{
+  const val=searchInput.value.toLowerCase();
+  cards.forEach(c=>{
+    c.style.display=c.innerText.toLowerCase().includes(val)?'block':'none';
+  });
+});
+
+function filter(type,e){
+  document.querySelectorAll('.category-btn').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  cards.forEach(c=>{
+    if(type==='all') c.style.display='block';
+    else c.style.display=c.dataset.type===type?'block':'none';
+  });
+}
+
+// stars generator
+for(let i=0;i<80;i++){
+  let s=document.createElement('div');
+  s.className='star';
+  s.style.left=Math.random()*100+'vw';
+  s.style.top=Math.random()*100+'vh';
+  s.style.animationDuration=(2+Math.random()*3)+'s';
+  document.body.appendChild(s);
+}
+</script>
 
 </body>
 </html>
