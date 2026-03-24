@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GameHub 2060</title>
+<title>GameHub GOD MODE</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
@@ -16,43 +16,19 @@ body{
   overflow-x:hidden;
 }
 
-/* animated gradient glow */
-body::before{
-  content:"";
+canvas{
   position:fixed;
-  width:200%;
-  height:200%;
-  background: radial-gradient(circle, #22c55e33, transparent 40%), radial-gradient(circle, #6366f133, transparent 40%);
-  animation: move 15s infinite alternate ease-in-out;
-  z-index:-2;
-}
-
-@keyframes move{
-  0%{transform:translate(0,0)}
-  100%{transform:translate(-200px,-200px)}
-}
-
-/* stars */
-.star{
-  position:fixed;
-  width:2px;
-  height:2px;
-  background:white;
-  opacity:0.7;
-  animation: twinkle 3s infinite alternate;
-}
-
-@keyframes twinkle{
-  from{opacity:0.2}
-  to{opacity:1}
+  top:0;
+  left:0;
+  z-index:-1;
 }
 
 header{
   text-align:center;
   padding:25px;
-  font-size:34px;
+  font-size:36px;
   background:linear-gradient(90deg,#22c55e,#6366f1);
-  text-shadow:0 0 25px #22c55e;
+  text-shadow:0 0 30px #22c55e;
 }
 
 .container{padding:20px}
@@ -103,25 +79,7 @@ header{
   backdrop-filter: blur(15px);
   transition:0.4s;
   position:relative;
-}
-
-/* glow border animation */
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:20px;
-  padding:2px;
-  background:linear-gradient(45deg,#22c55e,#6366f1,#22c55e);
-  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-  animation: borderAnim 4s linear infinite;
-}
-
-@keyframes borderAnim{
-  0%{filter:hue-rotate(0deg)}
-  100%{filter:hue-rotate(360deg)}
+  will-change: transform;
 }
 
 .card:hover{
@@ -148,17 +106,18 @@ footer{
   margin-top:30px;
   color:#94a3b8;
 }
-
 </style>
 </head>
 
 <body>
 
-<header>🚀 GameHub 2060 – Ultra Real Gaming Portal</header>
+<canvas id="bg"></canvas>
+
+<header>👑 GameHub GOD MODE</header>
 
 <div class="container">
 
-<input type="text" id="search" class="search-box" placeholder="Search futuristic games...">
+<input type="text" id="search" class="search-box" placeholder="Search games...">
 
 <div class="categories">
   <button class="category-btn active" onclick="filter('all', event)">All</button>
@@ -166,180 +125,88 @@ footer{
   <button class="category-btn" onclick="filter('tool', event)">Tools</button>
 </div>
 
-<div class="games">
-
-<div class="card" data-type="game">
-<h3>Roblox</h3>
-<p>Play millions of user-created games online.</p>
-<div class="buttons">
-<a href="https://www.roblox.com" target="_blank" class="site">Website</a>
-<a href="https://www.roblox.com/download" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="game">
-<h3>Minecraft</h3>
-<p>Build, explore and survive in a blocky world.</p>
-<div class="buttons">
-<a href="https://www.minecraft.net" target="_blank" class="site">Website</a>
-<a href="https://www.minecraft.net/download" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="tool">
-<h3>Wurst Client</h3>
-<p>Advanced Minecraft client.</p>
-<div class="buttons">
-<a href="https://www.wurstclient.net" target="_blank" class="site">Website</a>
-<a href="https://www.wurstclient.net/download/" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="tool">
-<h3>Fast Client</h3>
-<p>Boost Minecraft performance.</p>
-<div class="buttons">
-<a href="https://fastclient.net" target="_blank" class="site">Website</a>
-<a href="https://fastclient.net/download" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="tool">
-<h3>SK Launcher</h3>
-<p>Free Minecraft launcher.</p>
-<div class="buttons">
-<a href="https://skmedix.pl" target="_blank" class="site">Website</a>
-<a href="https://skmedix.pl/sklauncher" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="tool">
-<h3>Fabric API</h3>
-<p>Lightweight modding tool.</p>
-<div class="buttons">
-<a href="https://fabricmc.net" target="_blank" class="site">Website</a>
-<a href="https://fabricmc.net/use/installer/" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-
-
-<div class="card" data-type="game">
-<h3>Candy Crush</h3>
-<p>Match candies and solve fun puzzles.</p>
-<div class="buttons">
-<a href="https://www.king.com/game/candycrush" target="_blank" class="site">Website</a>
-<a href="https://play.google.com/store/apps/details?id=com.king.candycrushsaga" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="game">
-<h3>Call of Duty</h3>
-<p>High-intensity FPS action gameplay.</p>
-<div class="buttons">
-<a href="https://www.callofduty.com" target="_blank" class="site">Website</a>
-<a href="https://www.callofduty.com/download" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="game">
-<h3>Free Fire (Windows)</h3>
-<p>Battle royale optimized via emulator.</p>
-<div class="buttons">
-<a href="https://ff.garena.com" target="_blank" class="site">Website</a>
-<a href="https://www.bluestacks.com" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="tool">
-<h3>Velocity</h3>
-<p>Modern Minecraft proxy server.</p>
-<div class="buttons">
-<a href="https://velocitypowered.com" target="_blank" class="site">Website</a>
-<a href="https://velocitypowered.com/downloads/" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="tool">
-<h3>Xeno Client</h3>
-<p>Custom Minecraft client with features.</p>
-<div class="buttons">
-<a href="#" class="site">Website</a>
-<a href="#" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="tool">
-<h3>Solara Client</h3>
-<p>Advanced performance Minecraft client.</p>
-<div class="buttons">
-<a href="#" class="site">Website</a>
-<a href="#" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="tool">
-<h3>Discord</h3>
-<p>Chat, voice, and community platform.</p>
-<div class="buttons">
-<a href="https://discord.com" target="_blank" class="site">Website</a>
-<a href="https://discord.com/download" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="tool">
-<h3>Roblox Studio</h3>
-<p>Create your own Roblox games.</p>
-<div class="buttons">
-<a href="https://create.roblox.com" target="_blank" class="site">Website</a>
-<a href="https://www.roblox.com/create" target="_blank" class="download">Download</a>
-</div>
-</div>
-
-<div class="card" data-type="tool">
-<h3>Custom Cursor</h3>
-<p>Customize your mouse pointer.</p>
-<div class="buttons">
-<a href="https://custom-cursor.com" target="_blank" class="site">Website</a>
-<a href="https://custom-cursor.com/download" target="_blank" class="download">Download</a>
-</div>
-</div>
+<div class="games" id="gameList"></div>
 
 </div>
 
-</div>
-
-<footer>✨ Future Gaming Experience | 2060 UI</footer>
+<footer>⚡ Ultimate Gaming Experience</footer>
 
 <script>
-const searchInput=document.getElementById('search');
-const cards=document.querySelectorAll('.card');
+// GAME DATA (dynamic rendering)
+const games=[
+{name:"Roblox",type:"game",desc:"Play millions of games.",img:"https://tr.rbxcdn.com/180DAY-0a7f1e8e8d0c5cfd8f7f3c9c1e4f2f1d/768/432/Image/Webp/noFilter",site:"https://roblox.com",download:"https://roblox.com/download"},
+{name:"Wurst Client",type:"tool",desc:"Advanced Minecraft hacked client.",img:"https://www.wurstclient.net/img/wurstlogo.png",site:"https://www.wurstclient.net",download:"https://www.wurstclient.net/download/"},
+{name:"Fabric API",type:"tool",desc:"Lightweight modding toolchain.",img:"https://fabricmc.net/assets/logo.png",site:"https://fabricmc.net",download:"https://fabricmc.net/use/installer/"},
+{name:"Discord",type:"tool",desc:"Chat platform.",img:"https://cdn.discordapp.com/attachments/850000000000000000/discord-logo.png",site:"https://discord.com",download:"https://discord.com/download"},
+{name:"Custom Cursor",type:"tool",desc:"Cursor customization.",img:"https://custom-cursor.com/favicon.ico",site:"https://custom-cursor.com",download:"https://custom-cursor.com/download"},
+{name:"Minecraft",type:"game",desc:"Build and survive.",site:"https://minecraft.net",download:"https://minecraft.net/download"},
+,
+{name:"Fabric API",type:"tool",desc:"Lightweight modding toolchain for Minecraft.",site:"https://fabricmc.net",download:"https://fabricmc.net/use/installer/"}
+];
 
-searchInput.addEventListener('input',()=>{
-  const val=searchInput.value.toLowerCase();
-  cards.forEach(c=>{
-    c.style.display=c.innerText.toLowerCase().includes(val)?'block':'none';
-  });
-});
+const container=document.getElementById("gameList");
+function render(){
+ container.innerHTML="";
+ games.forEach(g=>{
+  const card=document.createElement("div");
+  card.className="card";
+  card.dataset.type=g.type;
+  card.innerHTML=`<img src="${g.img}" style="width:100%;border-radius:12px;margin-bottom:10px;height:150px;object-fit:cover;"><h3>${g.name}</h3><p>${g.desc}</p><div class="buttons"><a href="${g.site}" target="_blank" class="site">Website</a><a href="${g.download}" target="_blank" class="download">Download</a></div>`;
+  container.appendChild(card);
+ });
+}
+render();
+
+// FILTER + SEARCH
+let current="all";
+const search=document.getElementById("search");
+search.addEventListener("input",apply);
 
 function filter(type,e){
-  document.querySelectorAll('.category-btn').forEach(b=>b.classList.remove('active'));
-  e.target.classList.add('active');
-  cards.forEach(c=>{
-    if(type==='all') c.style.display='block';
-    else c.style.display=c.dataset.type===type?'block':'none';
-  });
+ current=type;
+ document.querySelectorAll(".category-btn").forEach(b=>b.classList.remove("active"));
+ if(e)e.target.classList.add("active");
+ apply();
 }
 
-// stars generator
-for(let i=0;i<80;i++){
-  let s=document.createElement('div');
-  s.className='star';
-  s.style.left=Math.random()*100+'vw';
-  s.style.top=Math.random()*100+'vh';
-  s.style.animationDuration=(2+Math.random()*3)+'s';
-  document.body.appendChild(s);
+function apply(){
+ const val=search.value.toLowerCase();
+ document.querySelectorAll(".card").forEach(c=>{
+  const ok=(current==='all'||c.dataset.type===current)&&c.innerText.toLowerCase().includes(val);
+  c.style.display=ok?"block":"none";
+ });
 }
+
+// 🔥 3D PARTICLE BACKGROUND (REALISTIC)
+const canvas=document.getElementById('bg');
+const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+for(let i=0;i<120;i++){
+ particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,z:Math.random()*2});
+}
+
+function animate(){
+ ctx.fillStyle="#020617";
+ ctx.fillRect(0,0,canvas.width,canvas.height);
+ ctx.fillStyle="#22c55e";
+ particles.forEach(p=>{
+  p.y+=p.z;
+  if(p.y>canvas.height) p.y=0;
+  ctx.beginPath();
+  ctx.arc(p.x,p.y,p.z*2,0,Math.PI*2);
+  ctx.fill();
+ });
+ requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener('resize',()=>{
+ canvas.width=window.innerWidth;
+ canvas.height=window.innerHeight;
+});
 </script>
 
 </body>
