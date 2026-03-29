@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GameHub GOD MODE</title>
+<title>GameHub 2060 FINAL</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
@@ -16,197 +16,195 @@ body{
   overflow-x:hidden;
 }
 
-canvas{
+/* 🔥 COOL REALISTIC MOUSE GLOW */
+.glow{
   position:fixed;
-  top:0;
-  left:0;
+  width:300px;
+  height:300px;
+  pointer-events:none;
+  border-radius:50%;
+  background: radial-gradient(circle,
+    rgba(34,197,94,0.25) 0%,
+    rgba(34,197,94,0.15) 30%,
+    rgba(34,197,94,0.08) 50%,
+    transparent 70%);
+  filter: blur(40px);
+  transform: translate(-50%,-50%);
   z-index:-1;
 }
 
+/* background glow */
+body::before{
+  content:"";
+  position:fixed;
+  width:200%;
+  height:200%;
+  background: radial-gradient(circle, #22c55e33, transparent 40%), radial-gradient(circle, #6366f133, transparent 40%);
+  animation: move 15s infinite alternate;
+  z-index:-2;
+}
+
+@keyframes move{
+  from{transform:translate(0,0)}
+  to{transform:translate(-200px,-200px)}
+}
+
+/* stars */
+.star{
+  position:fixed;
+  width:2px;
+  height:2px;
+  background:white;
+  opacity:0.7;
+}
+
+/* header */
 header{
   text-align:center;
   padding:25px;
-  font-size:36px;
+  font-size:32px;
   background:linear-gradient(90deg,#22c55e,#6366f1);
-  text-shadow:0 0 30px #22c55e;
 }
 
+/* container */
 .container{padding:20px}
 
 .search-box{
   width:100%;
-  padding:14px;
-  border-radius:12px;
+  padding:12px;
+  border-radius:10px;
   border:none;
   margin-bottom:20px;
-  font-size:16px;
   background:#0f172a;
   color:white;
 }
 
-.categories{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:20px;
+/* grid */
+.games{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
 }
 
-.category-btn{
-  padding:10px 16px;
-  border:none;
-  border-radius:25px;
+/* card */
+.card{
   background:#0f172a;
-  color:white;
-  cursor:pointer;
+  padding:15px;
+  border-radius:15px;
+  text-align:center;
   transition:0.3s;
 }
 
-.category-btn:hover, .active{
-  background:#22c55e;
-  box-shadow:0 0 15px #22c55e;
-}
-
-.games{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:25px;
-}
-
-.card{
-  background:rgba(15,23,42,0.6);
-  border-radius:20px;
-  padding:18px;
-  backdrop-filter: blur(15px);
-  transition:0.4s;
-  position:relative;
-  will-change: transform;
-}
-
 .card:hover{
-  transform:translateY(-10px) scale(1.05);
-  box-shadow:0 0 40px #22c55e55;
+  transform:scale(1.05);
+  box-shadow:0 0 25px #22c55e55;
 }
 
+/* icon */
+.icon{
+  font-size:50px;
+  margin-bottom:10px;
+}
+
+/* buttons */
 .buttons a{
   display:inline-block;
   margin-top:10px;
-  margin-right:6px;
-  padding:9px 14px;
+  padding:8px 12px;
   border-radius:8px;
   text-decoration:none;
   color:white;
 }
 
 .site{background:#3b82f6}
-.download{background:#22c55e}
 
 footer{
   text-align:center;
   padding:20px;
   margin-top:30px;
-  color:#94a3b8;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
+<!-- glow -->
+<div class="glow" id="glow"></div>
 
-<header>👑 GameHub GOD MODE</header>
+<header>🚀 GameHub 2060 FINAL</header>
 
 <div class="container">
 
 <input type="text" id="search" class="search-box" placeholder="Search games...">
 
-<div class="categories">
-  <button class="category-btn active" onclick="filter('all', event)">All</button>
-  <button class="category-btn" onclick="filter('game', event)">Games</button>
-  <button class="category-btn" onclick="filter('tool', event)">Tools</button>
+<div class="games">
+
+<div class="card"><div class="icon">🎮</div><h3>Roblox</h3><div class="buttons"><a href="https://roblox.com" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">🧱</div><h3>Minecraft</h3><div class="buttons"><a href="https://minecraft.net" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">🏰</div><h3>Clash of Clans</h3><div class="buttons"><a href="https://supercell.com/en/games/clashofclans/" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">🔫</div><h3>Call of Duty</h3><div class="buttons"><a href="https://www.callofduty.com" target="_blank" class="site">Open</a></div></div>
+
+<div class="card"><div class="icon">🔥</div><h3>Free Fire</h3><div class="buttons"><a href="https://ff.garena.com" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">⚔️</div><h3>Fortnite</h3><div class="buttons"><a href="https://www.epicgames.com/fortnite" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">🧑‍🚀</div><h3>Among Us</h3><div class="buttons"><a href="https://innersloth.com/gameAmongUs.php" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">🍬</div><h3>Candy Crush</h3><div class="buttons"><a href="https://www.king.com/game/candycrush" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">🏹</div><h3>Clash Royale</h3><div class="buttons"><a href="https://supercell.com/en/games/clashroyale/" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">🚗</div><h3>Asphalt 9</h3><div class="buttons"><a href="https://asphaltlegends.com" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">🧟</div><h3>PUBG</h3><div class="buttons"><a href="https://pubg.com" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">🧠</div><h3>Chess.com</h3><div class="buttons"><a href="https://chess.com" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">🐉</div><h3>Dragon City</h3><div class="buttons"><a href="https://www.dragoncitygame.com" target="_blank" class="site">Open</a></div></div>
+<div class="card"><div class="icon">🎲</div><h3>Ludo King</h3><div class="buttons"><a href="https://ludoking.com" target="_blank" class="site">Open</a></div></div>
+
 </div>
 
-<div class="games" id="gameList"></div>
-
 </div>
 
-<footer>⚡ Ultimate Gaming Experience</footer>
+<footer>✨ FINAL VERSION | ULTRA SMOOTH UI</footer>
 
 <script>
-// GAME DATA (dynamic rendering)
-const games=[
-{name:"Roblox",type:"game",desc:"Play millions of games.",img:"https://tr.rbxcdn.com/180DAY-0a7f1e8e8d0c5cfd8f7f3c9c1e4f2f1d/768/432/Image/Webp/noFilter",site:"https://roblox.com",download:"https://roblox.com/download"},
-{name:"Wurst Client",type:"tool",desc:"Advanced Minecraft hacked client.",img:"https://www.wurstclient.net/img/wurstlogo.png",site:"https://www.wurstclient.net",download:"https://www.wurstclient.net/download/"},
-{name:"Fabric API",type:"tool",desc:"Lightweight modding toolchain.",img:"https://fabricmc.net/assets/logo.png",site:"https://fabricmc.net",download:"https://fabricmc.net/use/installer/"},
-{name:"Discord",type:"tool",desc:"Chat platform.",img:"https://cdn.discordapp.com/attachments/850000000000000000/discord-logo.png",site:"https://discord.com",download:"https://discord.com/download"},
-{name:"Custom Cursor",type:"tool",desc:"Cursor customization.",img:"https://custom-cursor.com/favicon.ico",site:"https://custom-cursor.com",download:"https://custom-cursor.com/download"},
-{name:"Minecraft",type:"game",desc:"Build and survive.",site:"https://minecraft.net",download:"https://minecraft.net/download"},
-,
-{name:"Fabric API",type:"tool",desc:"Lightweight modding toolchain for Minecraft.",site:"https://fabricmc.net",download:"https://fabricmc.net/use/installer/"}
-];
 
-const container=document.getElementById("gameList");
-function render(){
- container.innerHTML="";
- games.forEach(g=>{
-  const card=document.createElement("div");
-  card.className="card";
-  card.dataset.type=g.type;
-  card.innerHTML=`<img src="${g.img}" style="width:100%;border-radius:12px;margin-bottom:10px;height:150px;object-fit:cover;"><h3>${g.name}</h3><p>${g.desc}</p><div class="buttons"><a href="${g.site}" target="_blank" class="site">Website</a><a href="${g.download}" target="_blank" class="download">Download</a></div>`;
-  container.appendChild(card);
- });
-}
-render();
-
-// FILTER + SEARCH
-let current="all";
-const search=document.getElementById("search");
-search.addEventListener("input",apply);
-
-function filter(type,e){
- current=type;
- document.querySelectorAll(".category-btn").forEach(b=>b.classList.remove("active"));
- if(e)e.target.classList.add("active");
- apply();
-}
-
-function apply(){
- const val=search.value.toLowerCase();
- document.querySelectorAll(".card").forEach(c=>{
-  const ok=(current==='all'||c.dataset.type===current)&&c.innerText.toLowerCase().includes(val);
-  c.style.display=ok?"block":"none";
- });
-}
-
-// 🔥 3D PARTICLE BACKGROUND (REALISTIC)
-const canvas=document.getElementById('bg');
-const ctx=canvas.getContext('2d');
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-for(let i=0;i<120;i++){
- particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,z:Math.random()*2});
-}
-
-function animate(){
- ctx.fillStyle="#020617";
- ctx.fillRect(0,0,canvas.width,canvas.height);
- ctx.fillStyle="#22c55e";
- particles.forEach(p=>{
-  p.y+=p.z;
-  if(p.y>canvas.height) p.y=0;
-  ctx.beginPath();
-  ctx.arc(p.x,p.y,p.z*2,0,Math.PI*2);
-  ctx.fill();
- });
- requestAnimationFrame(animate);
-}
-animate();
-
-window.addEventListener('resize',()=>{
- canvas.width=window.innerWidth;
- canvas.height=window.innerHeight;
+/* SEARCH */
+document.getElementById("search").addEventListener("input",function(){
+  let val=this.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(c=>{
+    c.style.display=c.innerText.toLowerCase().includes(val)?"block":"none";
+  });
 });
+
+/* STARS */
+for(let i=0;i<80;i++){
+  let s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  s.style.top=Math.random()*100+"vh";
+  document.body.appendChild(s);
+}
+
+/* 🔥 ULTRA SMOOTH GLOW ENGINE */
+const glow = document.getElementById("glow");
+
+let mouseX = 0;
+let mouseY = 0;
+let posX = 0;
+let posY = 0;
+
+document.addEventListener("mousemove", (e)=>{
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateGlow(){
+  posX += (mouseX - posX) * 0.15;
+  posY += (mouseY - posY) * 0.15;
+
+  glow.style.left = posX + "px";
+  glow.style.top = posY + "px";
+
+  requestAnimationFrame(animateGlow);
+}
+
+animateGlow();
+
 </script>
 
 </body>
